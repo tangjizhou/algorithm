@@ -1,4 +1,4 @@
-package net.mshome.twisted.algorithm.leecode;
+package net.mshome.twisted.algorithm.leecode.S001;
 
 import org.junit.jupiter.api.Test;
 

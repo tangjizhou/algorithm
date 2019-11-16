@@ -21,7 +21,7 @@ public class InsertSort {
         System.out.println(Arrays.toString(arr));
     }
 
-
+    // 直接插入排序，每一个元素都进行比较
     public void insertSort(int[] arr) {
         for (int i = 1; i < arr.length; i++) {
             int current = arr[i];
@@ -32,9 +32,11 @@ public class InsertSort {
                 pre--;
             }
             arr[pre + 1] = current;
-
         }
+    }
 
+    // 折半插入排序
+    public void bInsertSort(int[] arr) {
 
     }
 
