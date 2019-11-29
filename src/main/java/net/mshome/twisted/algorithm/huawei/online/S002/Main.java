@@ -29,7 +29,7 @@ import java.util.Stack;
 public class Main {
 
     public static void main(String[] args) {
-        calc("3 * (72 - 22) + 5 + 3 + 2");
+        calc("3 * (72 - 22) + 5 + 3 + 22");
         //[3, 72, 22, -, *, 5, +, 3, +, +]
         //3 50 * 5 + 3 + +
         //    150 5 + 3 + +
@@ -101,14 +101,12 @@ public class Main {
                     postExpression.push(operatorStack.pop().toString());
                 }
                 operatorStack.push(c);
-                continue;
-            }
-            if (number.length() != 0) {
-                postExpression.push(number.toString());
-                number.setLength(0);
             }
 
-
+        }
+        if (number.length() != 0) {
+            postExpression.push(number.toString());
+            number.setLength(0);
         }
         while (!operatorStack.isEmpty()) {
             postExpression.push(operatorStack.pop().toString());
