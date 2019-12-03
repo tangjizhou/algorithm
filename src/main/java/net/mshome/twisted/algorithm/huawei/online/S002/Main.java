@@ -1,5 +1,8 @@
 package net.mshome.twisted.algorithm.huawei.online.S002;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
@@ -28,94 +31,102 @@ import java.util.Stack;
  */
 public class Main {
 
-    public static void main(String[] args) {
-        calc("3 * (72 - 22) + 5 + 3 + 22");
-        //[3, 72, 22, -, *, 5, +, 3, +, +]
-        //3 50 * 5 + 3 + +
-        //    150 5 + 3 + +
-        //    155 3 + 2 +
-        //    158
-    }
 
-    /**
-     * 表达式求值,利用后缀表达式，3*(2+1)的后缀表达式为：321+*
-     *
-     * @return 值
-     */
-    public static long calc(String inputs) {
-        Stack<Character> operatorStack = new Stack<>(); // * （ - ）
-        Stack<String> postExpression = new Stack<>(); // 3  72  22
-        Map<Character, Integer> operators = new HashMap<>(6);
-        operators.put('+', 1);
-        operators.put('-', 1);
-        operators.put('*', 2);
-        operators.put('/', 2);
-        operators.put('(', 0);
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String inputs = "";
+        while ((inputs = br.readLine()) != null) {
+            Stack<String> operatorStack = new Stack<>(); // * （ - ）
+            Stack<String> postExpression = new Stack<>(); // 3  72  22
+            Map<String, Integer> operators = new HashMap<>(6);
+            operators.put("+", 1);
+            operators.put("-", 1);
+            operators.put("*", 2);
+            operators.put("/", 2);
+            operators.put("(", 0);
 
-        StringBuilder number = new StringBuilder(0);
-        char[] input = inputs.toCharArray();
+            StringBuilder number = new StringBuilder(0);
+            char[] input = inputs.toCharArray();
 
-        for (char c : input) {
-            if ((int) c - (int) '0' < 10 && (int) c - (int) '0' > 0) {
-                number.append(c);
-            }
-
-            if (c == ' ') {
-                if (number.length() != 0) {
+            // 1. 构造后缀表达式
+            for (char c : input) {
+                String charStr = String.valueOf(c);
+                if ((int) c - (int) '0' < 10 && (int) c - (int) '0' >= 0) {
+                    number.append(c);
+                } else if (number.length() != 0) {
                     postExpression.push(number.toString());
                     number.setLength(0);
                 }
-                continue;
-            }
 
-            if (c == '(') {
-                if (number.length() != 0) {
-                    postExpression.push(number.toString());
-                    number.setLength(0);
-                }
-                operatorStack.push(c);
-                continue;
-            }
-            if (c == ')') {
-                if (number.length() != 0) {
-                    postExpression.push(number.toString());
-                    number.setLength(0);
-                }
-                while (operatorStack.peek() != '(') {
-                    postExpression.push(operatorStack.pop().toString());
-                }
-                operatorStack.pop();
-                continue;
-            }
-
-            if (operators.get(c) != null) {
-                if (number.length() != 0) {
-                    postExpression.push(number.toString());
-                    number.setLength(0);
-                }
-                if (operatorStack.isEmpty()) {
-                    operatorStack.push(c);
+                if (c == ' ') {
                     continue;
                 }
-                while (!operatorStack.isEmpty() && operators.get(c) <= operators.get(operatorStack.peek())) {
-                    postExpression.push(operatorStack.pop().toString());
+
+                if (c == '(') {
+                    operatorStack.push(charStr);
+                    continue;
                 }
-                operatorStack.push(c);
+                if (c == ')') {
+                    while (!"(".equals(operatorStack.peek())) {
+                        postExpression.push(operatorStack.pop());
+                    }
+                    operatorStack.pop();
+                    continue;
+                }
+
+                if (operators.get(charStr) != null) {
+                    if (operatorStack.isEmpty()) {
+                        operatorStack.push(charStr);
+                        continue;
+                    }
+                    while (!operatorStack.isEmpty() &&
+                            operators.get(charStr) <= operators.get(operatorStack.peek())) {
+                        postExpression.push(operatorStack.pop());
+                    }
+                    operatorStack.push(charStr);
+                }
             }
 
-        }
-        if (number.length() != 0) {
-            postExpression.push(number.toString());
-            number.setLength(0);
-        }
-        while (!operatorStack.isEmpty()) {
-            postExpression.push(operatorStack.pop().toString());
+            if (number.length() != 0) {
+                postExpression.push(number.toString());
+                number.setLength(0);
+            }
+            while (!operatorStack.isEmpty()) {
+                postExpression.push(operatorStack.pop());
+            }
+            // 2. 逆序栈元素
+            while (!postExpression.isEmpty()) {
+                operatorStack.push(postExpression.pop());
+            }
+
+            // 3. 计算
+            while (operatorStack.size() > 0) {
+                String popEle = operatorStack.pop();
+                if (operators.get(popEle) == null) { // 数字
+                    postExpression.push(popEle);
+                } else { // 操作符，进行运算
+                    Integer secondValue = Integer.valueOf(postExpression.pop());
+                    Integer firstValue = Integer.valueOf(postExpression.pop());
+                    postExpression.push(calc(firstValue, secondValue, popEle).toString());
+                }
+            }
+            System.out.println(postExpression.pop());
         }
 
-        System.out.println(operatorStack);
-        System.out.println(postExpression);
-        return 1;
     }
 
+    private static Integer calc(Integer first, Integer second, String operator) {
+        switch (operator) {
+            case "+":
+                return first + second;
+            case "-":
+                return first - second;
+            case "*":
+                return first * second;
+            case "/":
+                return first / second;
+        }
+        return 0;
+    }
 
 }
