@@ -27,8 +27,38 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNext()) {
+            int input = scanner.nextInt();
+            int count = 0;
+
+            // 1. 按位与，n & (n-1) 可以去除最低位的1
+            while (input != 0) {
+                input &= input - 1;
+                count++;
+            }
+
+            // 2. 老老实实求最大的数
+            // while (input > 0) {
+            //     int maxBinary = getClosestBinary(input);
+            //     input -= maxBinary;
+            //     if (maxBinary > 0) {
+            //         count++;
+            //     }
+            // }
+            System.out.println(count);
 
         }
+    }
+
+
+    private static int getClosestBinary(int number) {
+        if (number < 2) {
+            return number;
+        }
+        int binary = 2;
+        while (binary <= number) {
+            binary <<= 1;
+        }
+        return binary >> 1;
     }
 
 }
