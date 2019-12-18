@@ -10,6 +10,21 @@ import java.util.Stack;
  */
 public class ReverseStack {
 
+    public static void main(String[] args) {
+        new ReverseStack().test();
+    }
+
+    private void test() {
+        for (int i = 0; i < 10; i++) {
+            stack.push(i);
+        }
+        reverse();
+        for (Integer integer : stack) {
+            System.out.print(integer + "\t");
+        }
+    }
+
+
     private Stack<Integer> stack;
 
     public ReverseStack() {
