@@ -35,63 +35,24 @@ class Solution {
 
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         int carry = 0;
-        ListNode node1 = l1, node2 = l2, head = new ListNode(0), last = head, current = null;
-        while (node1 != null && node2 != null) {
+        ListNode node1 = l1, node2 = l2, head = new ListNode(0), current = head;
+        while (node1 != null || node2 != null) {
+            node1 = node1 == null ? new ListNode(0) : node1;
+            node2 = node2 == null ? new ListNode(0) : node2;
+
             int sum = node1.val + node2.val + carry;
-            if (sum >= 10) {
-                sum %= 10;
-                carry = 1;
-            } else {
-                carry = 0;
-            }
-            current = new ListNode(sum);
-            last.next = current;
-            last = current;
+            carry = sum / 10;
+            sum = sum % 10;
+
+            current.next = new ListNode(sum);
+            current = current.next;
 
             node1 = node1.next;
             node2 = node2.next;
         }
-
-
-        while (node1 != null) {
-            int value = node1.val;
-            value += carry;
-            carry = 0;
-            int sum = 0;
-            if (value >= 10) {
-                sum = value % 10;
-                carry = 1;
-            } else {
-                sum = value;
-            }
-            current = new ListNode(sum);
-            last.next = current;
-            last = current;
-            node1 = node1.next;
-        }
-
-        while (node2 != null) {
-            int value = node2.val;
-            value += carry;
-            carry = 0;
-            int sum = 0;
-            if (value >= 10) {
-                sum = value % 10;
-                carry = 1;
-            } else {
-                sum = value;
-            }
-            current = new ListNode(sum);
-            last.next = current;
-            last = current;
-            node2 = node2.next;
-        }
-
         if (carry != 0) {
-            current = new ListNode(1);
-            last.next = current;
+            current.next = new ListNode(carry);
         }
-
 
         return head.next;
     }
