@@ -1,4 +1,4 @@
-package net.mshome.twisted.algorithm.practice;
+package net.mshome.twisted.algorithm.chinasoft;
 
 /**
  * 字符串s1,s2长度相等，内容只包含字符x，y，不包含其他字符，每次互相交换一个字符，
