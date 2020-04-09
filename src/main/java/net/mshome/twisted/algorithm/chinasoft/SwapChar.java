@@ -10,7 +10,7 @@ package net.mshome.twisted.algorithm.chinasoft;
 public class SwapChar {
 
     public static void main(String[] args) {
-        System.out.println(minSwap("xy", "yx"));
+        System.out.println(minSwap("xyxy", "yxyx"));
     }
 
 
@@ -47,8 +47,8 @@ public class SwapChar {
 
         // xy 和 yx 这一种情况需要交换2次才会相等
         // 两两抵消之后，发现最后要么一个都没剩下，要么剩下xy和yx这一种情况。剩下这种情况对可能性则只可能是xy，yx字母对都是奇数
-        int afterSwapped = xyPair % 2 == 0 ? 0 : 1;
-        return xyPair / 2 + yxPair / 2 + afterSwapped * 2;
+        int afterSwappedLeftPairCount = xyPair % 2 == 0 ? 0 : 1;
+        return xyPair / 2 + yxPair / 2 + afterSwappedLeftPairCount * 2;
     }
 
 
