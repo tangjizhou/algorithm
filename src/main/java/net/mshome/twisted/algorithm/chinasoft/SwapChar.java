@@ -26,7 +26,7 @@ public class SwapChar {
 
         // s1,s2的字符对，一个取自s1Arr，一个取自s2Arr，计算相同位置有差异对字母对
         int xyPair = 0, yxPair = 0;
-        for (int i = 0, length = s1Arr.length; i < length; i++) {
+        for (int i = 0, length = s1Arr.length; i < length; ++i) {
             if (s1Arr[i] == s2Arr[i]) {
                 continue;
             }
