@@ -1,4 +1,4 @@
-package net.mshome.twisted.algorithm.huawei.online.S004;
+package net.mshome.twisted.algorithm.huawei.online;
 
 import java.util.Scanner;
 
@@ -25,7 +25,7 @@ import java.util.Scanner;
  * @author tangjizhouchn@foxmail.com
  * @date 2019/12/4
  */
-public class Main {
+public class SplitStringToGivenLength {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

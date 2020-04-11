@@ -1,4 +1,4 @@
-package net.mshome.twisted.algorithm.huawei.online.S006;
+package net.mshome.twisted.algorithm.huawei.online;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +36,7 @@ import java.util.Scanner;
  * @author tangjizhouchn@foxmail.com
  * @date 2019/12/6
  */
-public class Main {
+public class PrimeFactor {
 
     public static void main(String[] args) {
 
@@ -47,12 +47,13 @@ public class Main {
             List<String> factors = new ArrayList<>();
             int factor = 2;
             int loopIndex = 1;
-            while (factor != number) {
 
-                // 一直除以2，直到为奇数
+            // 一直除以2，直到为奇数，奇数的因子必然为奇数，不存在不能被任何质数整除的整数
+            // 如果除了之后的结果不是质数，则可以划分为更小的质数，从最小的2开始，一致除到无法除之后在增大
+            while (factor != number) {
                 if (number % factor == 0) {
                     factors.add(String.valueOf(factor));
-                    number = number / factor;
+                    number /= factor;
                     continue;
                 }
 

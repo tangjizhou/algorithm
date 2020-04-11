@@ -1,4 +1,4 @@
-package net.mshome.twisted.algorithm.huawei.online.S002;
+package net.mshome.twisted.algorithm.huawei.online;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -30,7 +30,7 @@ import java.util.Stack;
  * @author tangjizhouchn@foxmail.com
  * @date 2019/11/28
  */
-public class Main {
+public class CalcPolynomialResult {
 
 
     public static void main(String[] args) throws IOException {
