@@ -1,4 +1,4 @@
-package net.mshome.twisted.algorithm.leecode.S001;
+package net.mshome.twisted.algorithm.leecode;
 
 import org.junit.jupiter.api.Test;
 
@@ -7,12 +7,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * LeetCode 两数之和
+ * 1. 两数之和
+ * 思路：Map解决，固定一个数，Map.get另一个
  *
  * @author tangjizhouchn@foxmail.com
  * @date 2019/11/5
  */
-public class Solution {
+public class TwoSum {
 
     public int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>(nums.length);

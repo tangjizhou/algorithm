@@ -1,14 +1,10 @@
-package net.mshome.twisted.algorithm.leecode.S002;
+package net.mshome.twisted.algorithm.leecode;
 
 /**
- * Definition for singly-linked list.
- * public class ListNode {
- * int val;
- * ListNode next;
- * ListNode(int x) { val = x; }
- * }
+ * 2. 两数相加
+ * 思路：迭代链表，节点为空则赋值new ListNode(0)
  */
-class Solution {
+class AddTwoNumbers {
 
     public static void main(String[] args) {
         ListNode node11 = new ListNode(2);
