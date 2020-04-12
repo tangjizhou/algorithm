@@ -1,5 +1,7 @@
 package net.mshome.twisted.algorithm.chinasoft;
 
+import java.util.Objects;
+
 /**
  * 字符串s1,s2长度相等，内容只包含字符x，y，不包含其他字符，每次互相交换一个字符，
  * 求使得两个字符串相等的最小交换次数，如果无法使两个字符串相等，则返回-1
@@ -15,9 +17,8 @@ public class SwapChar {
 
 
     public static int minSwap(String s1, String s2) {
-
         // 长度不相等则肯定不可能相等
-        if (s1.length() != s2.length()) {
+        if (Objects.isNull(s1) || Objects.isNull(s2) || s1.length() != s2.length()) {
             return -1;
         }
 
