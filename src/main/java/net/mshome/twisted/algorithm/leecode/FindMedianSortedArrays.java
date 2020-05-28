@@ -1,21 +1,26 @@
 package net.mshome.twisted.algorithm.leecode;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 /**
  * 4. 寻找两个有序数组的中位数，要求算法的时间复杂度为 O(log(m + n))
  * 思路：
  */
 public class FindMedianSortedArrays {
 
-    public static void main(String[] args) {
+    @Test
+    public void test() {
         int[] nums1 = new int[]{1, 2, 2, 2, 2, 2};
         int[] nums2 = new int[]{3, 3};
-        System.out.println(findMedianSortedArrays(nums1, nums2));
+        Assert.assertEquals(findMedianSortedArrays(nums1, nums2), 2, 0);
     }
+
 
     /**
      * 时间复杂度 O(m+n / 2)
      */
-    public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         int[] total = new int[nums1.length + nums2.length];
         int i = 0, j = 0, k = 0, totalLength = total.length;
         while (i < nums1.length || j < nums2.length) {
@@ -41,9 +46,6 @@ public class FindMedianSortedArrays {
      * 时间复杂度 O(log(m+n))
      */
     public static double findMedianSortedArrays1(int[] nums1, int[] nums2) {
-
-
-
 
 
         return 0;
