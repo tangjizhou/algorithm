@@ -1,6 +1,6 @@
 package net.mshome.twisted.algorithm.leecode;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.HashMap;

@@ -1,6 +1,6 @@
 package net.mshome.twisted.algorithm.interview;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.util.TreeMap;
 
