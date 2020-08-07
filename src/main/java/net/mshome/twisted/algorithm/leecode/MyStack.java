@@ -1,4 +1,4 @@
-package net.mshome.twisted.algorithm.data.structure.stack;
+package net.mshome.twisted.algorithm.leecode;
 
 import java.util.LinkedList;
 import java.util.Queue;

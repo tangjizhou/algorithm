@@ -1,4 +1,4 @@
-package net.mshome.twisted.algorithm.data.structure.stack;
+package net.mshome.twisted.algorithm.leecode;
 
 import org.junit.Assert;
 import org.junit.Test;
