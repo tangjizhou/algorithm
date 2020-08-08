@@ -11,8 +11,8 @@ import java.util.Stack;
  */
 public class MyQueue {
 
-    private Stack<Integer> pushStack;
-    private Stack<Integer> popStack;
+    private final Stack<Integer> pushStack;
+    private final Stack<Integer> popStack;
 
     /**
      * Initialize your data structure here.
