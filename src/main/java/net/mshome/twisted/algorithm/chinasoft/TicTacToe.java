@@ -19,7 +19,6 @@ public class TicTacToe {
     public static String ticTacToe(String[] board) {
         int length = board.length;
         char[][] arrays = new char[length + 1][length + 1];
-
         boolean lrDiagonal = true, rlDiagonal = true, hasBlank = false;
         for (int i = 0; i < length; i++) {
             System.arraycopy(board[i].toCharArray(), 0, arrays[i], 0, length);
