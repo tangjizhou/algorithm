@@ -29,6 +29,7 @@ public class LongestPalindrome {
         }
         boolean[][] dp = new boolean[chars.length][chars.length];
         // dp[i][j] = dp[i+1][j-1] && s[i] = s[j]
+        // 因为依赖i+1，j-1（左下角）的数据，所以必须将前一列的数据全部填充，按照列顺序填充
         int max = 0, start = 0;
         for (int j = 0; j < chars.length; j++) {
             for (int i = 0; i <= j; i++) {
