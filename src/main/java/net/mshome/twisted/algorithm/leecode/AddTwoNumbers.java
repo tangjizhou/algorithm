@@ -1,12 +1,15 @@
 package net.mshome.twisted.algorithm.leecode;
 
+import org.junit.Test;
+
 /**
  * 2. 两数相加
  * 思路：迭代链表，节点为空则赋值new ListNode(0)
  */
 class AddTwoNumbers {
 
-    public static void main(String[] args) {
+    @Test
+    public void main() {
         ListNode node11 = new ListNode(2);
         ListNode node12 = new ListNode(4);
         ListNode node13 = new ListNode(3);
