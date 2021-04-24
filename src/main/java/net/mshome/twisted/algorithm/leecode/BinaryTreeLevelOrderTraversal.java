@@ -40,9 +40,7 @@ public class BinaryTreeLevelOrderTraversal {
             List<Integer> currentLevelValues = new ArrayList<>();
             while (current < children) {
                 root = nodes.poll();
-                if (root == null) {
-                    continue;
-                }
+                if (root == null) continue;
                 currentLevelValues.add(root.val);
                 if (root.left != null) nodes.add(root.left);
                 if (root.right != null) nodes.add(root.right);
