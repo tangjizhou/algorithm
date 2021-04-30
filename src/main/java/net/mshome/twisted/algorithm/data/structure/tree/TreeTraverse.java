@@ -135,10 +135,6 @@ public class TreeTraverse {
         return values;
     }
 
-    public void postorderTraversal(TreeNode root) {
-
-    }
-
     public List<Integer> preorderDFS(TreeNode root, List<Integer> values) {
         if (root == null) {
             return Collections.emptyList();
@@ -214,27 +210,6 @@ public class TreeTraverse {
         treeNode3.left = treeNode6;
         treeNode3.right = treeNode7;
         root = treeNode1;
-    }
-
-    static class TreeNode {
-
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() {
-        }
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-
     }
 
 }
