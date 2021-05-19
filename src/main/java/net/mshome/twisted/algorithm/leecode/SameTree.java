@@ -1,5 +1,6 @@
 package net.mshome.twisted.algorithm.leecode;
 
+import net.mshome.twisted.algorithm.data.structure.tree.TreeNode;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -12,28 +13,6 @@ import java.util.LinkedList;
  * @since 2021/1/27
  */
 public class SameTree {
-
-    // Definition for a binary tree node.
-    public static class TreeNode {
-
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() {
-        }
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-
-    }
 
     @Test
     public void test() {
