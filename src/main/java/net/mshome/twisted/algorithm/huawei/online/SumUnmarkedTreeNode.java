@@ -1,6 +1,7 @@
 package net.mshome.twisted.algorithm.huawei.online;
 
 import net.mshome.twisted.algorithm.data.structure.tree.TreeNode;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -31,25 +32,23 @@ public class SumUnmarkedTreeNode {
         node.right.left.left = new TreeNode(1);
         node.right.left.right = new TreeNode(3);
         node.right.left.left.left = new TreeNode(16);
-        System.out.println(sum(node));
-        System.out.println();
+        Assert.assertEquals(49, sum(node));
     }
 
     public int sum(TreeNode root) {
-        sumHelper(root.left, root.val);
-        sumHelper(root.right, root.val);
+        sumPathsAndMark(root, 0);
         int markedSum = marked.stream().mapToInt(v -> v).sum();
-        return total + root.val - markedSum;
+        return total - markedSum;
     }
 
-    public List<Integer> sumHelper(TreeNode node, int sum) {
+    public List<Integer> sumPathsAndMark(TreeNode node, int sum) {
         if (node == null) {
             return Collections.emptyList();
         }
         total += node.val;
         List<Integer> sums = new ArrayList<>();
-        List<Integer> leftSums = sumHelper(node.left, sum + node.val);
-        List<Integer> rightSums = sumHelper(node.right, sum + node.val);
+        List<Integer> leftSums = sumPathsAndMark(node.left, sum + node.val);
+        List<Integer> rightSums = sumPathsAndMark(node.right, sum + node.val);
         if (leftSums.isEmpty() && rightSums.isEmpty()) {
             return List.of(node.val);
         }
