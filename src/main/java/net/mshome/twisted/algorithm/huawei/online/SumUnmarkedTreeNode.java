@@ -17,7 +17,7 @@ import java.util.List;
 public class SumUnmarkedTreeNode {
 
 
-    private final List<Integer> marked = new ArrayList<>();
+    private int markedSum = 0;
     private int total = 0;
 
     @Test
@@ -37,7 +37,6 @@ public class SumUnmarkedTreeNode {
 
     public int sum(TreeNode root) {
         sumPathsAndMark(root, 0);
-        int markedSum = marked.stream().mapToInt(v -> v).sum();
         return total - markedSum;
     }
 
@@ -54,11 +53,11 @@ public class SumUnmarkedTreeNode {
         }
 
         for (Integer leftSum : leftSums) {
-            if (leftSum == sum) marked.add(node.val);
+            if (leftSum == sum) markedSum += node.val;
             sums.add(leftSum + node.val);
         }
         for (Integer rightSum : rightSums) {
-            if (rightSum == sum) marked.add(node.val);
+            if (rightSum == sum) markedSum += node.val;
             sums.add(rightSum + node.val);
         }
         return sums;
