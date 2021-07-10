@@ -14,8 +14,9 @@ public class BinarySearch {
 
     @Test
     public void test() {
-        Assert.assertEquals(0, search(new int[]{2, 5}, 2));
+        Assert.assertEquals(1, search(new int[]{0, 2, 5}, 2));
     }
+
 
     public int search(int[] nums, int target) {
         int left = 0;
