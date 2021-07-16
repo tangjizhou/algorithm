@@ -1,5 +1,6 @@
 package net.mshome.twisted.algorithm.leecode;
 
+import net.mshome.twisted.algorithm.data.structure.ListNode;
 import org.junit.Test;
 
 /**
@@ -63,17 +64,4 @@ class AddTwoNumbers {
             node1 = node1.next;
         }
     }
-
-
-    public static class ListNode {
-
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-
-    }
-
 }
