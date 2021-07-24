@@ -1,5 +1,6 @@
-package net.mshome.twisted.algorithm.data.structure.tree;
+package net.mshome.twisted.algorithm.leecode;
 
+import net.mshome.twisted.algorithm.data.structure.TreeNode;
 import org.junit.Before;
 import org.junit.Test;
 

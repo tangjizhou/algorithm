@@ -1,6 +1,6 @@
 package net.mshome.twisted.algorithm.leecode;
 
-import net.mshome.twisted.algorithm.data.structure.tree.TreeNode;
+import net.mshome.twisted.algorithm.data.structure.TreeNode;
 
 /**
  * https://leetcode-cn.com/problems/symmetric-tree/

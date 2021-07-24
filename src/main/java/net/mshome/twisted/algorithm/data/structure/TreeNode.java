@@ -1,4 +1,4 @@
-package net.mshome.twisted.algorithm.data.structure.tree;
+package net.mshome.twisted.algorithm.data.structure;
 
 public class TreeNode {
 

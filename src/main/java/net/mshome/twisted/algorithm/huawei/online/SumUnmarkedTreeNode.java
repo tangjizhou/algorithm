@@ -1,6 +1,6 @@
 package net.mshome.twisted.algorithm.huawei.online;
 
-import net.mshome.twisted.algorithm.data.structure.tree.TreeNode;
+import net.mshome.twisted.algorithm.data.structure.TreeNode;
 import org.junit.Assert;
 import org.junit.Test;
 
