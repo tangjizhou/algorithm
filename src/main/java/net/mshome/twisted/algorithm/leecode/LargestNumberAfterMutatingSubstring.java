@@ -13,7 +13,7 @@ public class LargestNumberAfterMutatingSubstring {
 
     @Test
     public void test() {
-        System.out.println(maximumNumber("334111", new int[]{0, 9, 2, 3, 3, 2, 5, 5, 5, 5}));
+        System.out.println(maximumNumber1("334111", new int[]{0, 9, 2, 3, 3, 2, 5, 5, 5, 5}));
     }
 
     public String maximumNumber(String num, int[] change) {
@@ -30,5 +30,15 @@ public class LargestNumberAfterMutatingSubstring {
         }
         return new String(chars);
     }
+
+    public String maximumNumber1(String num, int[] change) {
+        char[] chars = num.toCharArray();
+        int i = 0;
+        for (; i < chars.length && chars[i] - '0' >= change[chars[i] - '0']; ++i) ;
+        for (; i < chars.length && chars[i] - '0' < change[chars[i] - '0']; ++i)
+            chars[i] = (char) (change[chars[i] - '0'] + '0');
+        return new String(chars);
+    }
+
 
 }
