@@ -35,11 +35,12 @@ public class SearchA2dMatrix {
     // 查询最后一个不大于目标值的行
     private int searchRow(int[][] matrix, int target) {
         int start = 0, end = matrix.length - 1;
+        int maxCol = matrix[0].length - 1;
         while (start <= end) {
             int middle = start + (end - start) / 2;
-            if (middle == end || matrix[middle][0] == target) return middle;
+            if (matrix[middle][0] == target) return middle;
             if (matrix[middle][0] < target) {
-                if (matrix[middle + 1][0] > target) return middle;
+                if (matrix[middle][maxCol] >= target) return middle;
                 else start = middle + 1;
             } else {
                 end = middle - 1;
@@ -81,6 +82,28 @@ public class SearchA2dMatrix {
             }
         }
         return false;
+    }
+
+    @Test
+    public void test1() {
+        int[] row = {1};
+        Assert.assertEquals(-1, searchFirstGtTarget(row, 9));
+    }
+
+    public int searchFirstGtTarget(int[] row, int target) {
+        int l = 0, r = row.length - 1;
+        while (l <= r) {
+            int m = l + (r - l) / 2;
+            if (row[m] == target) {
+                return m;
+            } else if (row[m] < target) {
+                l = m + 1;
+            } else {
+                if (row[m - 1] < target) return m;
+                else r = m - 1;
+            }
+        }
+        return -1;
     }
 
 }

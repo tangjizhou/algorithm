@@ -14,37 +14,30 @@ public class SearchInRotatedSortedArray {
 
     @Test
     public void test() {
-        int[] nums = {4, 5, 6, 7, 0, 1, 2};
-        Assert.assertEquals(4, search1(nums, 0));
-        Assert.assertEquals(-1, search1(nums, 3));
+        int[] nums = {3, 1};
+        Assert.assertEquals(1, search2(nums, 1));
+        Assert.assertEquals(0, search2(nums, 3));
     }
 
-    public int search1(int[] nums, int target) {
-        int n = nums.length;
-        if (n == 0) {
-            return -1;
-        }
-        if (n == 1) {
-            return nums[0] == target ? 0 : -1;
-        }
-        int l = 0, r = n - 1;
-        while (l <= r) {
-            int middle = l + (r - l) / 2;
-            if (nums[middle] == target) {
-                return middle;
-            }
+    public int search2(int[] nums, int target) {
+        int l = 0, r = nums.length - 1;
+        if (nums.length == 0) return -1;
+        if (nums.length == 1) return nums[0] == target ? 0 : -1;
 
-            if (nums[l] < nums[middle]) {
-                if (nums[l] <= target && nums[middle] > target) {
-                    r = middle - 1;
+        while (l <= r) {
+            int m = l + (r - l) / 2;
+            if (nums[m] == target) return m;
+            if (nums[l] <= nums[m]) {
+                if (nums[l] <= target && nums[m] > target) {
+                    r = m - 1;
                 } else {
-                    l = middle + 1;
+                    l = m + 1;
                 }
             } else {
-                if (nums[middle] < target && nums[r] >= target) {
-                    l = middle + 1;
+                if (nums[m] < target && nums[r] >= target) {
+                    l = m + 1;
                 } else {
-                    r = middle - 1;
+                    r = m - 1;
                 }
             }
         }
